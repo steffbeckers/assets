@@ -244,7 +244,7 @@ export class TodoItemsClient implements ITodoItemsClient {
 }
 
 export interface ITodoListsClient {
-    get(): Observable<TodosVm>;
+    get(skip: number | undefined, take: number | undefined): Observable<TodosVm>;
     create(command: CreateTodoListCommand): Observable<number>;
     get2(id: number): Observable<FileResponse>;
     update(id: number, command: UpdateTodoListCommand): Observable<FileResponse>;
@@ -264,8 +264,16 @@ export class TodoListsClient implements ITodoListsClient {
         this.baseUrl = baseUrl ? baseUrl : "";
     }
 
-    get(): Observable<TodosVm> {
-        let url_ = this.baseUrl + "/api/TodoLists";
+    get(skip: number | undefined, take: number | undefined): Observable<TodosVm> {
+        let url_ = this.baseUrl + "/api/TodoLists?";
+        if (skip === null)
+            throw new Error("The parameter 'skip' cannot be null.");
+        else if (skip !== undefined)
+            url_ += "skip=" + encodeURIComponent("" + skip) + "&"; 
+        if (take === null)
+            throw new Error("The parameter 'take' cannot be null.");
+        else if (take !== undefined)
+            url_ += "take=" + encodeURIComponent("" + take) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {

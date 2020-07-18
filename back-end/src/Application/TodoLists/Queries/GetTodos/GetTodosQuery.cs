@@ -13,6 +13,8 @@ namespace Assets.Application.TodoLists.Queries.GetTodos
 {
     public class GetTodosQuery : IRequest<TodosVm>
     {
+        public int Skip { get; set; }
+        public int Take { get; set; }
     }
 
     public class GetTodosQueryHandler : IRequestHandler<GetTodosQuery, TodosVm>
@@ -36,6 +38,8 @@ namespace Assets.Application.TodoLists.Queries.GetTodos
                     .ToList(),
 
                 Lists = await _context.TodoLists
+                    .Skip(request.Skip)
+                    .Take(request.Take)
                     .ProjectTo<TodoListDto>(_mapper.ConfigurationProvider)
                     .OrderBy(t => t.Title)
                     .ToListAsync(cancellationToken)

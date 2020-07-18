@@ -13,9 +13,12 @@ namespace Assets.WebUI.Controllers
     public class TodoListsController : ApiController
     {
         [HttpGet]
-        public async Task<ActionResult<TodosVm>> Get()
+        public async Task<ActionResult<TodosVm>> Get(int skip, int take = 5)
         {
-            return await Mediator.Send(new GetTodosQuery());
+            return await Mediator.Send(new GetTodosQuery() {
+                Skip = skip,
+                Take = take
+            });
         }
 
         [HttpGet("{id}")]
