@@ -1,5 +1,5 @@
-﻿using AutoMapper;
-using Assets.Application.Common.Behaviours;
+﻿using Assets.Application.Common.Behaviours;
+using AutoMapper;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;

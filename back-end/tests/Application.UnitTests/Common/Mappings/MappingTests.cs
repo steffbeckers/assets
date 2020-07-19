@@ -1,7 +1,7 @@
-﻿using AutoMapper;
-using Assets.Application.Common.Mappings;
+﻿using Assets.Application.Common.Mappings;
 using Assets.Application.TodoLists.Queries.GetTodos;
 using Assets.Domain.Entities;
+using AutoMapper;
 using NUnit.Framework;
 using System;
 
@@ -27,7 +27,7 @@ namespace Assets.Application.UnitTests.Common.Mappings
         {
             _configuration.AssertConfigurationIsValid();
         }
-        
+
         [Test]
         [TestCase(typeof(TodoList), typeof(TodoListDto))]
         [TestCase(typeof(TodoItem), typeof(TodoItemDto))]

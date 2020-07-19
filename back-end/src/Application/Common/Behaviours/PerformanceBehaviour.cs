@@ -1,6 +1,6 @@
-﻿using MediatR;
+﻿using Assets.Application.Common.Interfaces;
+using MediatR;
 using Microsoft.Extensions.Logging;
-using Assets.Application.Common.Interfaces;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,7 +15,7 @@ namespace Assets.Application.Common.Behaviours
         private readonly IIdentityService _identityService;
 
         public PerformanceBehaviour(
-            ILogger<TRequest> logger, 
+            ILogger<TRequest> logger,
             ICurrentUserService currentUserService,
             IIdentityService identityService)
         {

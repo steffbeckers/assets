@@ -8,13 +8,16 @@ namespace Assets.Infrastructure.Persistence
 {
     public static class ApplicationDbContextSeed
     {
-        public static async Task SeedDefaultUserAsync(UserManager<ApplicationUser> userManager)
+        public static async Task SeedDefaultUserAsync(UserManager<User> userManager)
         {
-            var defaultUser = new ApplicationUser { UserName = "administrator@localhost", Email = "administrator@localhost" };
+            var defaultUser = new User {
+                UserName = "admin",
+                Email = "admin@localhost"
+            };
 
             if (userManager.Users.All(u => u.UserName != defaultUser.UserName))
             {
-                await userManager.CreateAsync(defaultUser, "Administrator1!");
+                await userManager.CreateAsync(defaultUser, "Admin12345!");
             }
         }
 

@@ -14,7 +14,10 @@ namespace Assets.Application.IntegrationTests.TodoLists.Queries
         [Test]
         public async Task ShouldReturnPriorityLevels()
         {
-            var query = new GetTodosQuery();
+            var query = new GetTodosQuery()
+            {
+                Take = 20
+            };
 
             var result = await SendAsync(query);
 
@@ -39,7 +42,10 @@ namespace Assets.Application.IntegrationTests.TodoLists.Queries
                     }
             });
 
-            var query = new GetTodosQuery();
+            var query = new GetTodosQuery()
+            {
+                Take = 20
+            };
 
             var result = await SendAsync(query);
 
