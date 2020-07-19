@@ -29,9 +29,9 @@ namespace Assets.Application.IntegrationTests.TodoLists.Commands
                 Title = "New List"
             });
 
-            await SendAsync(new DeleteTodoListCommand 
-            { 
-                Id = listId 
+            await SendAsync(new DeleteTodoListCommand
+            {
+                Id = listId
             });
 
             var list = await FindAsync<TodoList>(listId);

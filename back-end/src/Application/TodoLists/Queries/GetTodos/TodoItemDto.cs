@@ -1,6 +1,6 @@
-﻿using AutoMapper;
-using Assets.Application.Common.Mappings;
+﻿using Assets.Application.Common.Mappings;
 using Assets.Domain.Entities;
+using AutoMapper;
 
 namespace Assets.Application.TodoLists.Queries.GetTodos
 {

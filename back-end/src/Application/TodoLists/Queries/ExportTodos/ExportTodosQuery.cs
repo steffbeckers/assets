@@ -1,6 +1,6 @@
-﻿using AutoMapper;
+﻿using Assets.Application.Common.Interfaces;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Assets.Application.Common.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;

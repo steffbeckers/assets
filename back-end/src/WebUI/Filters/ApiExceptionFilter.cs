@@ -9,7 +9,6 @@ namespace Assets.WebUI.Filters
 {
     public class ApiExceptionFilter : ExceptionFilterAttribute
     {
-
         private readonly IDictionary<Type, Action<ExceptionContext>> _exceptionHandlers;
 
         public ApiExceptionFilter()

@@ -4,9 +4,9 @@ using Assets.Application.TodoItems.Commands.UpdateTodoItem;
 using Assets.Application.TodoLists.Commands.CreateTodoList;
 using Assets.Domain.Entities;
 using FluentAssertions;
-using System.Threading.Tasks;
 using NUnit.Framework;
 using System;
+using System.Threading.Tasks;
 
 namespace Assets.Application.IntegrationTests.TodoItems.Commands
 {
