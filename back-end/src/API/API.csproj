@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Assets.WebUI</RootNamespace>
-    <AssemblyName>Assets.WebUI</AssemblyName>
+    <RootNamespace>Assets.API</RootNamespace>
+    <AssemblyName>Assets.API</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
