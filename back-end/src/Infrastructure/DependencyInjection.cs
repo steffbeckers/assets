@@ -3,6 +3,7 @@ using Assets.Infrastructure.Files;
 using Assets.Infrastructure.Identity;
 using Assets.Infrastructure.Persistence;
 using Assets.Infrastructure.Services;
+using IdentityServer4;
 using IdentityServer4.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -10,6 +11,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Assets.Infrastructure
 {
@@ -29,6 +32,13 @@ namespace Assets.Infrastructure
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddIdentityServer()
+                //.AddInMemoryApiResources(new List<ApiResource>() {
+                //    new ApiResource()
+                //    {
+                //        Name = IdentityServerConstants.LocalApi.ScopeName,
+                //        DisplayName = "Assets API"
+                //    }
+                //})
                 .AddApiAuthorization<User, ApplicationDbContext>(options =>
                 {
                     options.Clients.Add(new Client()

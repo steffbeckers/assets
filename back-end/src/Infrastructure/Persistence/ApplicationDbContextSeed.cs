@@ -17,7 +17,7 @@ namespace Assets.Infrastructure.Persistence
 
             if (userManager.Users.All(u => u.UserName != defaultUser.UserName))
             {
-                await userManager.CreateAsync(defaultUser, "admin");
+                await userManager.CreateAsync(defaultUser, "Admin12345!");
             }
         }
 
