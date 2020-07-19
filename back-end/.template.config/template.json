@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Steff Beckers",
+  "identity": "SteffBeckers.Clean.Architecture.Solution.Template",
+  "name": "Steff Beckers Clean Architecture Solution",
+  "shortName": "sbca-sln",
+  "tags": {
+    "language": "C#"
+  },
+  //"classifications": ["Web", "WebAPI"], // Right at the top now :)
+  "sourceName": "Assets",
+  "preferNameDirectory": "true"
+}
