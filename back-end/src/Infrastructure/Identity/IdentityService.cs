@@ -9,9 +9,9 @@ namespace Assets.Infrastructure.Identity
 {
     public class IdentityService : IIdentityService
     {
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly UserManager<User> _userManager;
 
-        public IdentityService(UserManager<ApplicationUser> userManager)
+        public IdentityService(UserManager<User> userManager)
         {
             _userManager = userManager;
         }
@@ -24,7 +24,7 @@ namespace Assets.Infrastructure.Identity
         }
         public async Task<(Result Result, string UserId)> CreateUserAsync(string userName, string password)
         {
-            var user = new ApplicationUser
+            var user = new User
             {
                 UserName = userName,
                 Email = userName,
@@ -47,7 +47,7 @@ namespace Assets.Infrastructure.Identity
             return Result.Success();
         }
 
-        public async Task<Result> DeleteUserAsync(ApplicationUser user)
+        public async Task<Result> DeleteUserAsync(User user)
         {
             var result = await _userManager.DeleteAsync(user);
 

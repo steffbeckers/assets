@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;
 
-namespace Assets.WebUI.Filters
+namespace Assets.API.Filters
 {
     public class ApiExceptionFilter : ExceptionFilterAttribute
     {

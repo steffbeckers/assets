@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace Assets.WebUI.Controllers
+namespace Assets.API.Controllers
 {
     [Authorize]
     public class TodoListsController : ApiController

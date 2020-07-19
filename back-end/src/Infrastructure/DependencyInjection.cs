@@ -5,6 +5,7 @@ using Assets.Infrastructure.Persistence;
 using Assets.Infrastructure.Services;
 using IdentityServer4.Models;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -24,11 +25,12 @@ namespace Assets.Infrastructure
             services.AddScoped<IApplicationDbContext>(provider =>
                 provider.GetService<ApplicationDbContext>());
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddDefaultIdentity<User>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddIdentityServer()
-                .AddApiAuthorization<ApplicationUser, ApplicationDbContext>(options => {
+                .AddApiAuthorization<User, ApplicationDbContext>(options =>
+                {
                     options.Clients.Add(new Client()
                     {
                         ClientId = "generic",

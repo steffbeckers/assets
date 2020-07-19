@@ -1,7 +1,7 @@
-﻿using Assets.Application.Common.Interfaces;
+﻿using Assets.API;
+using Assets.Application.Common.Interfaces;
 using Assets.Infrastructure.Identity;
 using Assets.Infrastructure.Persistence;
-using Assets.WebUI;
 using MediatR;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -39,7 +39,7 @@ public class Testing
 
         services.AddSingleton(Mock.Of<IWebHostEnvironment>(w =>
             w.EnvironmentName == "Development" &&
-            w.ApplicationName == "Assets.WebUI"));
+            w.ApplicationName == "Assets.API"));
 
         services.AddLogging();
 
@@ -86,16 +86,16 @@ public class Testing
 
     public static async Task<string> RunAsDefaultUserAsync()
     {
-        return await RunAsUserAsync("test@local", "Testing1234!");
+        return await RunAsUserAsync("test@localhost", "Testing1234!");
     }
 
     public static async Task<string> RunAsUserAsync(string userName, string password)
     {
         using var scope = _scopeFactory.CreateScope();
 
-        var userManager = scope.ServiceProvider.GetService<UserManager<ApplicationUser>>();
+        var userManager = scope.ServiceProvider.GetService<UserManager<User>>();
 
-        var user = new ApplicationUser { UserName = userName, Email = userName };
+        var user = new User { UserName = userName, Email = userName };
 
         var result = await userManager.CreateAsync(user, password);
 

@@ -1,9 +1,9 @@
+using Assets.API.Filters;
+using Assets.API.Services;
 using Assets.Application;
 using Assets.Application.Common.Interfaces;
 using Assets.Infrastructure;
 using Assets.Infrastructure.Persistence;
-using Assets.WebUI.Filters;
-using Assets.WebUI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Assets.WebUI
+namespace Assets.API
 {
     public class Startup
     {

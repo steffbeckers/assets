@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Assets.WebUI.Controllers
+namespace Assets.API.Controllers
 {
     public class WeatherForecastController : ApiController
     {
