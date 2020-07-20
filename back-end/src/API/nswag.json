@@ -110,7 +110,7 @@
       "enumNameGeneratorType": null,
       "serviceHost": null,
       "serviceSchemes": null,
-      "output": "C:\\dev\\steffbeckers\\assets\\front-end\\angular\\assets\\src\\app\\assets.api.ts"
+      "output": "C:\\dev\\steffbeckers\\assets\\front-end\\angular\\assets\\src\\app\\api\\assets.api.ts"
     }
   }
 }

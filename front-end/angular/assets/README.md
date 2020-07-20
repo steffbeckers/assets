@@ -10,9 +10,18 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
+This app generated
+`ng new assets`
+
+NgRx
+https://ngrx.io/guide/schematics
 `npm install @ngrx/schematics @ngrx/store @ngrx/effects @ngrx/entity @ngrx/store-devtools`
 `ng generate @ngrx/schematics:store State --root --statePath store --module app.module.ts`
 `ng generate @ngrx/schematics:effect store/App --root --module app.module.ts --group`
+
+Auth module and state
+`ng generate module auth --route auth --module app.module.ts`
+`ng generate feature auth/store/Auth --module auth/auth.module.ts --group`
 
 ## Build
 
