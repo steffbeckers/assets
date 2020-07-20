@@ -21,7 +21,7 @@ https://ngrx.io/guide/schematics
 
 Auth module and state
 `ng generate module auth --route auth --module app.module.ts`
-`ng generate feature auth/store/Auth --module auth/auth.module.ts --group`
+`ng generate @ngrx/schematics:feature auth/store/Auth --module auth/auth.module.ts --group`
 
 ## Build
 

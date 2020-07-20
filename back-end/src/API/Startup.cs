@@ -28,6 +28,8 @@ namespace Assets.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+
             services.AddApplication();
             services.AddInfrastructure(_configuration);
 
@@ -38,8 +40,10 @@ namespace Assets.API
             services.AddHealthChecks()
                 .AddDbContextCheck<ApplicationDbContext>();
 
-            services.AddControllersWithViews(options =>
-                options.Filters.Add(new ApiExceptionFilter()));
+            services.AddControllers(options =>
+            {
+                options.Filters.Add(new ApiExceptionFilter());
+            });
 
             // Customise default API behaviour
             services.Configure<ApiBehaviorOptions>(options =>
@@ -80,6 +84,13 @@ namespace Assets.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(options =>
+            {
+                options.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
