@@ -98,7 +98,7 @@ namespace Assets.API
                 {
                     ClientId = "swagger",
                     ClientSecret = "Sw@ggerrr", // TODO: Move to config
-                    AppName = "Asset API - Swagger"
+                    AppName = "Assets API - Swagger"
                 };
             });
 
