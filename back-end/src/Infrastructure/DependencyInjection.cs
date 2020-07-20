@@ -48,6 +48,13 @@ namespace Assets.Infrastructure
                         RequireClientSecret = false,
                         AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials
                     });
+                    options.Clients.Add(new Client()
+                    {
+                        ClientId = "swagger",
+                        ClientName = "Swagger",
+                        ClientSecrets = new List<Secret>() { new Secret("Sw@ggerrr".Sha256()) },
+                        AllowedGrantTypes = GrantTypes.ClientCredentials
+                    });
                 });
 
             services.AddTransient<IDateTime, DateTimeService>();

@@ -10,6 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NSwag;
+using NSwag.AspNetCore;
+using NSwag.Generation.Processors.Security;
 
 namespace Assets.API
 {
@@ -43,6 +46,35 @@ namespace Assets.API
             {
                 options.SuppressModelStateInvalidFilter = true;
             });
+
+            services.AddOpenApiDocument(configure =>
+            {
+                configure.Title = "Assets API";
+
+                configure.AddSecurity("JWT Bearer token", new OpenApiSecurityScheme()
+                {
+                    Type = OpenApiSecuritySchemeType.ApiKey,
+                    Name = "Authorization",
+                    In = OpenApiSecurityApiKeyLocation.Header,
+                    Description = "Bearer {your JWT token}."
+                });
+                configure.OperationProcessors.Add(new OperationSecurityScopeProcessor("JWT Bearer token"));
+
+                configure.AddSecurity("OAuth2", new OpenApiSecurityScheme()
+                {
+                    Type = OpenApiSecuritySchemeType.OAuth2,
+                    Flows = new OpenApiOAuthFlows()
+                    {
+                        ClientCredentials = new OpenApiOAuthFlow()
+                        {
+                            // TODO: Move to config
+                            AuthorizationUrl = "http://localhost:5000/connect/authorize",
+                            TokenUrl = "http://localhost:5000/connect/token"
+                        }
+                    }
+                });
+                configure.OperationProcessors.Add(new OperationSecurityScopeProcessor("OAuth2"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +87,20 @@ namespace Assets.API
             }
 
             app.UseHealthChecks("/health");
+
+            app.UseStaticFiles();
+
+            app.UseSwaggerUi3(options =>
+            {
+                options.Path = "/api";
+                options.DocumentPath = "/api/specification.json";
+                options.OAuth2Client = new OAuth2ClientSettings()
+                {
+                    ClientId = "swagger",
+                    ClientSecret = "Sw@ggerrr", // TODO: Move to config
+                    AppName = "Asset API - Swagger"
+                };
+            });
 
             app.UseRouting();
 
